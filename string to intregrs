@@ -1,0 +1,11 @@
+public class StringToInteger {
+    public static void main(String[] args) {
+        String numberString = "12345";        
+        try {
+            int number = Integer.parseInt(numberString); 
+            System.out.println("The integer value is: " + number);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input: " + numberString + " is not a valid integer.");
+        }
+    }
+}
