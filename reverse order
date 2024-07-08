@@ -1,0 +1,53 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ReverseAlphabeticalOrder {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        String word = scanner.nextLine();
+        
+        // Convert the word to a character array
+        char[] charArray = word.toCharArray();
+        
+        // Sort the character array
+        sortArray(charArray);
+        
+        // Reverse the sorted array
+        reverseArray(charArray);
+        
+        // Convert the character array back to a string
+        String reversedAlphabeticalOrder = new String(charArray);
+        
+        System.out.println("Word arranged in reverse alphabetical order: " + reversedAlphabeticalOrder);
+    }
+    
+    // Function to sort the character array
+    public static void sortArray(char[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] > array[j]) {
+                    // Swap array[i] and array[j]
+                    char temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+    }
+    
+    public static void reverseArray(char[] array) {
+        int start = 0;
+        int end = array.length - 1;
+        
+        while (start < end) {
+            // Swap array[start] and array[end]
+            char temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+            
+            start++;
+            end--;
+        }
+    }
+}
