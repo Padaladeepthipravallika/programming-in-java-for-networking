@@ -1,0 +1,22 @@
+import java.util.Scanner;
+public class Factors {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number to find its factors: ");
+        int number = scanner.nextInt();
+        System.out.println("Factors of " + number + " are:");
+        findFactors(number);
+    }
+    public static void findFactors(int num) {
+        if (num < 1) {
+            System.out.println("Factors are not defined for numbers less than 1.");
+            return;
+        }
+        
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                System.out.println(i);
+            }
+        }
+    }
+}
