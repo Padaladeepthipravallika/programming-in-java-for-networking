@@ -1,0 +1,42 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+public class MostFrequentWord {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text: ");
+        String text = scanner.nextLine().toLowerCase();
+        System.out.print("Enter the number of banned words: ");
+        int bannedCount = scanner.nextInt();
+        scanner.nextLine(); 
+        Set<String> bannedWords = new HashSet<>();
+        System.out.println("Enter the banned words: ");
+        for (int i = 0; i < bannedCount; i++) {
+            bannedWords.add(scanner.nextLine().toLowerCase());
+        }
+        String mostFrequentWord = findMostFrequentWord(text, bannedWords);
+        System.out.println("The most frequent word that is not banned is: " + mostFrequentWord);
+        scanner.close();
+    }
+    public static String findMostFrequentWord(String text, Set<String> bannedWords) {
+        String[] words = text.split("\\W+");
+        Map<String, Integer> wordCount = new HashMap<>();
+        for (String word : words) {
+            if (!bannedWords.contains(word)) {
+                wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+            }
+        }
+        String mostFrequentWord = "";
+        int maxFrequency = 0;
+        for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
+            if (entry.getValue() > maxFrequency) {
+                mostFrequentWord = entry.getKey();
+                maxFrequency = entry.getValue();
+            }
+        }
+
+        return mostFrequentWord;
+    }
+}
