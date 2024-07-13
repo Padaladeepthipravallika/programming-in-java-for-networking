@@ -1,0 +1,14 @@
+public class Overload {
+    void assignValues(int a) {
+        System.out.println("Value 1: " + a);
+    }
+    void assignValues(int a, int b) {
+        System.out.println("Value 1: " + a);
+        System.out.println("Value 2: " + b);
+    }
+    public static void main(String[] args) {
+        Overload obj = new Overload();
+        obj.assignValues(10);
+        obj.assignValues(20, 30);
+    }
+}
