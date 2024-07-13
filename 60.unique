@@ -1,0 +1,16 @@
+import java.util.HashSet;
+import java.util.Set;
+public class UniqueCharacters {
+    public static void main(String[] args) {
+        String input = "abcb";
+        Set<Character> uniqueChars = new HashSet<>();       
+        for (char c : input.toCharArray()) {
+            if (input.indexOf(c) == input.lastIndexOf(c)) {
+                uniqueChars.add(c);
+            }
+        }      
+        for (char uniqueChar : uniqueChars) {
+            System.out.print(uniqueChar + " ");
+        }
+    }
+}
