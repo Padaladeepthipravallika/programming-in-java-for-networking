@@ -1,0 +1,32 @@
+import java.util.Arrays;
+
+public class GenericSort<T extends Comparable<T>> {
+    private T[] array;
+
+    public GenericSort(T[] array) {
+        this.array = array;
+    }
+
+    public void sort() {
+        Arrays.sort(array);
+    }
+
+    public void printArray() {
+        for (T element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Integer[] intArray = {4, 2, 7, 1, 5};
+        GenericSort<Integer> intSort = new GenericSort<>(intArray);
+        intSort.sort();
+        intSort.printArray();
+
+        String[] strArray = {"z", "a", "c", "b"};
+        GenericSort<String> strSort = new GenericSort<>(strArray);
+        strSort.sort();
+        strSort.printArray();
+    }
+}
