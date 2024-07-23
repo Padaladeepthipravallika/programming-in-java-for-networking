@@ -1,0 +1,23 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+public class MinMaxArray {
+    public static void main(String[] args) {
+        Integer[] array = {14, 16, 87, 36, 25, 89, 34};
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter value for M: ");
+        int M = scanner.nextInt();
+        System.out.print("Enter value for N: ");
+        int N = scanner.nextInt();
+        Arrays.sort(array, Collections.reverseOrder());
+        int mthMax = array[M - 1];
+        Arrays.sort(array);
+        int nthMin = array[N - 1];
+        int sum = mthMax + nthMin;
+        int diff = mthMax - nthMin;
+        System.out.println(M + "th Maximum Number = " + mthMax);
+        System.out.println(N + "th Minimum Number = " + nthMin);
+        System.out.println("Sum = " + sum);
+        System.out.println("Difference = " + diff);
+    }
+}
