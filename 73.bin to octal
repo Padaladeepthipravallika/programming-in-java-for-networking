@@ -1,0 +1,24 @@
+public class BinaryConverter {
+
+    // Method to convert binary to decimal
+    public static int binaryToDecimal(String binary) {
+        return Integer.parseInt(binary, 2);
+    }
+
+    // Method to convert decimal to octal
+    public static String decimalToOctal(int decimal) {
+        return Integer.toOctalString(decimal);
+    }
+
+    public static void main(String[] args) {
+        String binary = "1010"; // Example binary number
+
+        // Convert binary to decimal
+        int decimal = binaryToDecimal(binary);
+        System.out.println("Binary: " + binary + " -> Decimal: " + decimal);
+
+        // Convert decimal to octal
+        String octal = decimalToOctal(decimal);
+        System.out.println("Decimal: " + decimal + " -> Octal: " + octal);
+    }
+}
