@@ -1,0 +1,33 @@
+public class ParallelNumberPrinter {
+    public static void main(String[] args) {
+        int maxNumber = 30;
+        Thread thread1 = new Thread(new NumberTask(1, maxNumber, 3));
+        Thread thread2 = new Thread(new NumberTask(2, maxNumber, 3));
+        Thread thread3 = new Thread(new NumberTask(3, maxNumber, 3));
+        thread1.start();
+        thread2.start();
+        thread3.start();
+    }
+}
+class NumberTask implements Runnable {
+    private int startNumber;
+    private int maxNumber;
+    private int increment;
+    public NumberTask(int startNumber, int maxNumber, int increment) {
+        this.startNumber = startNumber;
+        this.maxNumber = maxNumber;
+        this.increment = increment;
+    }
+    @Override
+    public void run() {
+        for (int i = startNumber; i <= maxNumber; i += increment) {
+            System.out.println(Thread.currentThread().getName() + " prints: " + i);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); 
+                System.err.println("Thread interrupted");
+            }
+        }
+    }
+}
