@@ -1,0 +1,48 @@
+import java.util.TreeSet;
+
+public class ExamRoom {
+    private int n;
+    private TreeSet<Integer> students;
+
+    public ExamRoom(int n) {
+        this.n = n;
+        this.students = new TreeSet<>();
+    }
+
+    public int seat() {
+        int student = 0;
+        if (!students.isEmpty()) {
+            int dist = students.first();
+            Integer prev = null;
+            for (Integer s : students) {
+                if (prev != null) {
+                    int d = (s - prev) / 2;
+                    if (d > dist) {
+                        dist = d;
+                        student = prev + d;
+                    }
+                }
+                prev = s;
+            }
+            if (n - 1 - students.last() > dist) {
+                student = n - 1;
+            }
+        }
+        students.add(student);
+        return student;
+    }
+
+    public void leave(int p) {
+        students.remove(p);
+    }
+
+    public static void main(String[] args) {
+        ExamRoom examRoom = new ExamRoom(10);
+        System.out.println(examRoom.seat()); // Output: 0
+        System.out.println(examRoom.seat()); // Output: 9
+        System.out.println(examRoom.seat()); // Output: 4
+        System.out.println(examRoom.seat()); // Output: 2
+        examRoom.leave(4);
+        System.out.println(examRoom.seat()); // Output: 5
+    }
+}
