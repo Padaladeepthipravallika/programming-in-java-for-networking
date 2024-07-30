@@ -1,0 +1,35 @@
+public class Singleton {
+    // The sole instance of the class
+    private static Singleton instance;
+
+    // Private constructor to prevent instantiation from other classes
+    private Singleton() {
+        // private constructor to prevent instantiation
+    }
+
+    // Public method to provide access to the instance
+    public static Singleton getInstance() throws Exception {
+        if (instance == null) {
+            instance = new Singleton();
+        } else {
+            throw new Exception("Only one instance allowed");
+        }
+        return instance;
+    }
+
+    // Main method to demonstrate the singleton behavior
+    public static void main(String[] args) {
+        try {
+            // First attempt to create the singleton instance
+            Singleton firstInstance = Singleton.getInstance();
+            System.out.println("First instance created");
+
+            // Second attempt to create the singleton instance should throw an exception
+            Singleton secondInstance = Singleton.getInstance();
+            System.out.println("Second instance created");
+        } catch (Exception e) {
+            // Handle the exception if a second instance is attempted to be created
+            System.err.println(e.getMessage());
+        }
+    }
+}
