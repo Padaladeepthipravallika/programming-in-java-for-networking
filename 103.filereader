@@ -1,0 +1,24 @@
+import java.io.*;
+
+public class FileReaderWriterExample {
+    public static void main(String[] args) {
+        // Specify the input and output file paths
+        String inputFilePath = "input.txt";
+        String outputFilePath = "output.txt";
+
+        // Create FileReader and FileWriter objects
+        try (FileReader fileReader = new FileReader(inputFilePath);
+             FileWriter fileWriter = new FileWriter(outputFilePath)) {
+
+            int character;
+            // Read each character from the input file and write it to the output file
+            while ((character = fileReader.read()) != -1) {
+                fileWriter.write(character);
+            }
+
+            System.out.println("Data has been successfully copied from " + inputFilePath + " to " + outputFilePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
