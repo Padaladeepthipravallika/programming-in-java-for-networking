@@ -1,0 +1,23 @@
+public class ProvidentFund {
+    public static void main(String[] args) {
+        double principal = 10000; // example principal amount
+        double rate = 0.08; // example rate of interest
+        int time = 5; // example time period in years
+
+        try {
+            double interest = calculateInterest(principal, rate, time);
+            System.out.println("Interest: " + interest);
+        } catch (ArithmeticException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        } finally {
+            System.out.println("Interest calculation complete.");
+        }
+    }
+
+    public static double calculateInterest(double principal, double rate, int time) throws ArithmeticException {
+        if (principal <= 0 || rate <= 0 || time <= 0) {
+            throw new ArithmeticException("Invalid input values");
+        }
+        return principal * rate * time;
+    }
+}
