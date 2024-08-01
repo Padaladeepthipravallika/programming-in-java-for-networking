@@ -1,0 +1,22 @@
+interface IterF1 {
+    void add(int a, int b);
+    void sub(int a, int b);
+}
+
+class Operations implements IterF1 {
+    @Override
+    public void add(int a, int b) {
+        System.out.println("Addition: " + (a + b));
+    }
+
+    @Override
+    public void sub(int a, int b) {
+        System.out.println("Subtraction: " + (a - b));
+    }
+
+    public static void main(String[] args) {
+        Operations ops = new Operations();
+        ops.add(10, 5);
+        ops.sub(10, 5);
+    }
+}
